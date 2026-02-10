@@ -1,0 +1,237 @@
+/**
+ * @cometweb/carbon-badge — Theme styles (CSS-in-JS)
+ * 
+ * v1.1: Premium UI (Glassmorphism Dark + Clean Light)
+ * Uses 'Nunito Sans' font and CometWeb brand colors.
+ */
+
+import type { BadgeTheme } from './types';
+
+const BASE_STYLES = `
+  @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;600;700;800&display=swap');
+
+  :host {
+    display: inline-block;
+    --cw-bg-dark: #18181B;
+    --cw-bg-surface: #27272a;
+    --cw-text-light: #FFFFFF;
+    --cw-accent: #05F29B;
+    --cw-accent-glow: rgba(5, 242, 155, 0.4);
+    --cw-action: #04C27C;
+    --cw-deep: #034C32;
+    --cw-gray: #A1A1AA;
+    --cw-border: rgba(255, 255, 255, 0.08);
+    --cw-font: 'Nunito Sans', sans-serif;
+    font-family: var(--cw-font);
+  }
+
+  /* --- BASE BADGE STYLES --- */
+  .cw-badge {
+    display: flex;
+    align-items: center;
+    width: 320px;
+    max-width: 100%;
+    padding: 16px 16px 20px 16px;
+    border-radius: 14px;
+    font-family: var(--cw-font);
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    position: relative;
+    box-sizing: border-box;
+    border: 1px solid transparent;
+    line-height: 1.4;
+  }
+
+  /* Grade Box */
+  .cw-grade {
+    width: 52px;
+    height: 52px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 26px;
+    margin-right: 16px;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+  }
+
+  /* Content Styles */
+  .cw-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0; /* text overflow fix */
+  }
+
+  .cw-title {
+    font-size: 17px;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 4px;
+    letter-spacing: -0.01em;
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+    white-space: nowrap;
+  }
+  
+  .cw-title small {
+    font-size: 0.75em;
+    font-weight: 600;
+    opacity: 0.7;
+  }
+
+  .cw-subtitle {
+    font-size: 13px;
+    font-weight: 500;
+    opacity: 0.8;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Footer */
+  .cw-footer {
+    position: absolute;
+    bottom: 8px;
+    right: 14px;
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    opacity: 0.4;
+    transition: opacity 0.3s ease;
+  }
+
+  /* Score Colors */
+  .grade-aplus { background: linear-gradient(135deg, #059669 0%, #047857 100%); color: #fff; }
+  .grade-a { background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: #fff; }
+  .grade-b { background: linear-gradient(135deg, #34d399 0%, #059669 100%); color: #064e3b; }
+  .grade-c { background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%); color: #78350f; }
+  .grade-d { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); color: #fff; }
+  .grade-f { background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); color: #fff; }
+  .grade-unknown { background: #3f3f46; color: rgba(255,255,255,0.5); }
+
+  /* Loading State */
+  .cw-badge.loading .cw-grade {
+    animation: cw-pulse 1.5s ease-in-out infinite;
+  }
+  .cw-badge.loading .cw-title, .cw-badge.loading .cw-subtitle {
+    opacity: 0.5;
+  }
+
+  @keyframes cw-pulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+  }
+
+  /* Error State */
+  .cw-error-actions {
+    margin-top: 4px;
+  }
+  .cw-retry-btn {
+    background: transparent;
+    border: 1px solid currentColor;
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 10px;
+    font-family: inherit;
+    color: inherit;
+    cursor: pointer;
+    opacity: 0.7;
+  }
+  .cw-retry-btn:hover { opacity: 1; }
+`;
+
+const THEME_STYLES: Record<BadgeTheme, string> = {
+  dark: `
+    .cw-badge {
+      background: linear-gradient(180deg, rgba(39, 39, 42, 0.6) 0%, rgba(24, 24, 27, 0.95) 100%);
+      border: 1px solid var(--cw-border);
+      color: var(--cw-text-light);
+      box-shadow: 
+          0 4px 6px -1px rgba(0, 0, 0, 0.1), 
+          0 2px 4px -1px rgba(0, 0, 0, 0.06),
+          inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(8px);
+    }
+
+    /* Dark theme specific grade overrides for better glowing effect */
+    .cw-badge .grade-aplus, .cw-badge .grade-a {
+        background: linear-gradient(135deg, var(--cw-accent) 0%, var(--cw-action) 100%);
+        color: #000;
+        box-shadow: 0 4px 12px rgba(5, 242, 155, 0.15);
+        text-shadow: 0 1px 0 rgba(255,255,255,0.2);
+    }
+    .cw-badge .grade-b {
+        background: linear-gradient(135deg, #6ee7b7 0%, #34d399 100%);
+        color: #064e3b;
+    }
+
+    .cw-badge .cw-subtitle {
+      color: var(--cw-gray);
+    }
+    
+    .cw-highlight {
+      color: var(--cw-accent);
+      font-weight: 600;
+    }
+
+    .cw-badge:hover {
+      transform: translateY(-2px);
+      border-color: rgba(5, 242, 155, 0.3);
+      box-shadow: 
+          0 12px 30px -10px rgba(0, 0, 0, 0.5),
+          0 0 20px rgba(5, 242, 155, 0.05);
+    }
+
+    .cw-badge:hover .cw-grade {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(5, 242, 155, 0.4);
+    }
+
+    .cw-badge:hover .cw-footer {
+      opacity: 0.8;
+      color: var(--cw-accent);
+    }
+  `,
+  light: `
+    .cw-badge {
+        background: #FFFFFF;
+        border: 1px solid #E4E4E7;
+        color: #18181B;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    }
+
+    .cw-badge .cw-subtitle {
+        color: #52525B;
+    }
+
+    .cw-highlight {
+        color: var(--cw-action);
+        font-weight: 600;
+    }
+
+    .cw-badge:hover {
+        border-color: var(--cw-action);
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+        transform: translateY(-2px);
+    }
+
+    .cw-badge:hover .cw-footer {
+        opacity: 0.8;
+        color: var(--cw-action);
+    }
+  `,
+};
+
+export function getStyles(theme: BadgeTheme): string {
+  return BASE_STYLES + (THEME_STYLES[theme] || THEME_STYLES.dark);
+}
